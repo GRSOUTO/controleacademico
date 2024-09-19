@@ -83,7 +83,7 @@ public class MenuDisciplina {
 		}
 		System.out.println("1 novacargaHoraria :" + novacargaHoraria);
 		
-		if (novacargaHoraria.getInteger(null))) {
+		if (novacargaHoraria == null) {
 			novacargaHoraria = disciplinaEncontrada.getCargaHoraria();
 
 		}
