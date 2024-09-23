@@ -60,7 +60,7 @@ public class MenuUtil {
 			break;
 		case 0:
 			System.out.println("Saindo do sistema...");
-			limparTela();
+			// limparTela();
 			break;
 		default:
 			System.out.println("Opção inválida!");
@@ -88,7 +88,7 @@ public class MenuUtil {
 			break;
 		case 2:
 			limparTela();
-			MenuProfessor.cadastrarProfessor(); 
+			MenuProfessor.cadastrarProfessor();
 			break;
 		case 3:
 			MenuDisciplina.cadastrarDisciplina();
