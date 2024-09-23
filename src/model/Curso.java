@@ -9,19 +9,19 @@ public class Curso {
 
 	private Professor professor;
 
-	private Aluno aluno;
+	///private Aluno aluno;
 
 	public Curso() {
 
 	}
 
-	public Curso(Integer codigo, String descricao, Disciplina disciplina, Professor professor, Aluno aluno) {
+	public Curso(Integer codigo, String descricao, Disciplina disciplina, Professor professor) {
 		super();
 		this.codigo = codigo;
 		this.descricao = descricao;
 		this.disciplina = disciplina;
 		this.professor = professor;
-		this.aluno = aluno;
+		
 	}
 
 	public Integer getCodigo() {
@@ -56,18 +56,13 @@ public class Curso {
 		this.professor = professor;
 	}
 
-	public Aluno getAluno() {
-		return aluno;
-	}
 
-	public void setAluno(Aluno aluno) {
-		this.aluno = aluno;
-	}
+
 
 	@Override
 	public String toString() {
 		return "\n" + "Curso [codigo=" + codigo + ", descricao=" + descricao + ", disciplina=" + disciplina + ", professor="
-				+ professor + ", aluno=" + aluno + "]";
+				+ professor + "]";
 	}
 
 

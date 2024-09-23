@@ -7,105 +7,91 @@ public class Turma {
 	private Integer diaSemana;
 	private String horarios;
 
-	private Professor professor;
+	private Curso curso;
 	private Aluno aluno;
-	private Disciplina disciplina;
+
 
 	public Turma() {
-
 	}
 
-	public Turma(Integer ano, Integer semestre, Integer diaSemana, String horarios, Professor professor, Aluno aluno,
-			Disciplina disciplina) {
+
+	public Turma(Integer ano, Integer semestre, Integer diaSemana, String horarios, Curso curso, Aluno aluno) {
 		super();
 		this.ano = ano;
 		this.semestre = semestre;
 		this.diaSemana = diaSemana;
 		this.horarios = horarios;
-		this.professor = professor;
+		this.curso = curso;
 		this.aluno = aluno;
-		this.disciplina = disciplina;
 	}
 
-		
-	
+
 	public Integer getAno() {
 		return ano;
 	}
+
 
 	public void setAno(Integer ano) {
 		this.ano = ano;
 	}
 
+
 	public Integer getSemestre() {
 		return semestre;
 	}
+
 
 	public void setSemestre(Integer semestre) {
 		this.semestre = semestre;
 	}
 
+
 	public Integer getDiaSemana() {
 		return diaSemana;
 	}
+
 
 	public void setDiaSemana(Integer diaSemana) {
 		this.diaSemana = diaSemana;
 	}
 
+
 	public String getHorarios() {
 		return horarios;
 	}
+
 
 	public void setHorarios(String horarios) {
 		this.horarios = horarios;
 	}
 
-	public Professor getProfessor() {
-		return professor;
+
+	public Curso getCurso() {
+		return curso;
 	}
 
-	public void setProfessor(Professor professor) {
-		this.professor = professor;
+
+	public void setCurso(Curso curso) {
+		this.curso = curso;
 	}
+
 
 	public Aluno getAluno() {
 		return aluno;
 	}
 
+
 	public void setAluno(Aluno aluno) {
 		this.aluno = aluno;
 	}
 
-	public Disciplina getDisciplina() {
-		return disciplina;
-	}
-
-	public void setDisciplina(Disciplina disciplina) {
-		this.disciplina = disciplina;
-	}
-
-	public void abrirTurno() {
-
-	}
-
-	public void alocarProfessor() {
-
-	}
-
-	public void matricularAluno() {
-
-	}
-
-	public void emitirDiario() {
-
-	}
 
 	@Override
 	public String toString() {
-		return "\n" + "Turma [ano=" + ano + ", semestre=" + semestre + ", diaSemana=" + diaSemana + ", horarios=" + horarios
-				+ ", professor=" + professor + ", aluno=" + aluno + ", disciplina=" + disciplina + "]";
+		return "Turma [ano=" + ano + ", semestre=" + semestre + ", diaSemana=" + diaSemana + ", horarios=" + horarios
+				+ ", curso=" + curso + ", aluno=" + aluno + "]";
 	}
+
 	
 	
 }

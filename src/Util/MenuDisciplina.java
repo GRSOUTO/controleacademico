@@ -1,16 +1,9 @@
 package Util;
 
-import java.time.LocalDate;
 import java.util.Scanner;
-
 import dao.DisciplinaDaoImp;
-import dao.AlunoDao;
-import dao.AlunoDaoImpl;
 import dao.DisciplinaDao;
-import model.Aluno;
 import model.Disciplina;
-import model.Situacao;
-import model.TipoSexo;
 
 public class MenuDisciplina {
 	public static void cadastrarDisciplina() {
@@ -41,14 +34,13 @@ public class MenuDisciplina {
 	}
 
 	public static void alterarDisciplina() {
+		Integer cargaHoraria = 0;
 		Scanner scanner = new Scanner(System.in);
 
 		DisciplinaDao disciplinaDao = new DisciplinaDaoImp();
 
 		System.out.println(disciplinaDao.getTodos());
 
-		Integer cargaHoraria = 0;
-		
 		System.out.print("Digite Código da Disciplina :");
 		Long codigo = scanner.nextLong();
 
@@ -73,20 +65,18 @@ public class MenuDisciplina {
 		String novacargaHoraria = scanner.nextLine();
 		System.out.print("Ementa :");
 		String novaementa = scanner.nextLine();
-	
+
 		System.out.print("Bibliografia :");
 		String novabibliografia = scanner.nextLine();
-
-		System.out.println("0 novacargaHoraria :" + novacargaHoraria);
 
 		if (novadescricao.isEmpty()) {
 			novadescricao = disciplinaEncontrada.getDescricao();
 		}
 
 		if (!novacargaHoraria.isEmpty()) {
-			 cargaHoraria = Integer.parseInt(novacargaHoraria);
+			cargaHoraria = Integer.parseInt(novacargaHoraria);
 		} else if (novacargaHoraria.isEmpty()) {
-			 cargaHoraria = disciplinaEncontrada.getCargaHoraria();
+			cargaHoraria = disciplinaEncontrada.getCargaHoraria();
 		}
 
 		if (novaementa.isEmpty()) {
@@ -96,9 +86,6 @@ public class MenuDisciplina {
 		if (novabibliografia.isEmpty()) {
 			novabibliografia = disciplinaEncontrada.getBibliografia();
 		}
-
-		System.out.println("2 novacargaHoraria :" + novacargaHoraria);
-		System.out.println("3-novacargaHoraria :" + disciplinaEncontrada.getCargaHoraria());
 
 		Disciplina disciplina = new Disciplina(codigo, novadescricao, cargaHoraria, novaementa, novabibliografia);
 		disciplinaDao.editar(disciplina);
