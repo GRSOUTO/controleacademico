@@ -90,7 +90,6 @@ public class MenuUtil {
 			limparTela();
 			MenuProfessor.cadastrarProfessor(); 
 			break;
-
 		case 3:
 			MenuDisciplina.cadastrarDisciplina();
 			break;
