@@ -47,6 +47,8 @@ public class MenuDisciplina {
 
 		System.out.println(disciplinaDao.getTodos());
 
+		Integer cargaHoraria = 0;
+		
 		System.out.print("Digite Código da Disciplina :");
 		Long codigo = scanner.nextLong();
 
@@ -68,24 +70,23 @@ public class MenuDisciplina {
 		scanner.nextLine();
 		String novadescricao = scanner.nextLine();
 		System.out.print("Carga Horaria :");
-		Integer novacargaHoraria = scanner.nextInt();
+		String novacargaHoraria = scanner.nextLine();
 		System.out.print("Ementa :");
 		String novaementa = scanner.nextLine();
-		scanner.nextLine();
+	
 		System.out.print("Bibliografia :");
 		String novabibliografia = scanner.nextLine();
-		
-		
+
 		System.out.println("0 novacargaHoraria :" + novacargaHoraria);
-		
+
 		if (novadescricao.isEmpty()) {
 			novadescricao = disciplinaEncontrada.getDescricao();
 		}
-		System.out.println("1 novacargaHoraria :" + novacargaHoraria);
-		
-		if (novacargaHoraria == null) {
-			novacargaHoraria = disciplinaEncontrada.getCargaHoraria();
 
+		if (!novacargaHoraria.isEmpty()) {
+			 cargaHoraria = Integer.parseInt(novacargaHoraria);
+		} else if (novacargaHoraria.isEmpty()) {
+			 cargaHoraria = disciplinaEncontrada.getCargaHoraria();
 		}
 
 		if (novaementa.isEmpty()) {
@@ -96,16 +97,13 @@ public class MenuDisciplina {
 			novabibliografia = disciplinaEncontrada.getBibliografia();
 		}
 
-		
 		System.out.println("2 novacargaHoraria :" + novacargaHoraria);
 		System.out.println("3-novacargaHoraria :" + disciplinaEncontrada.getCargaHoraria());
-		
-		Disciplina disciplina = new Disciplina(codigo, novadescricao, novacargaHoraria, novaementa, novabibliografia);
+
+		Disciplina disciplina = new Disciplina(codigo, novadescricao, cargaHoraria, novaementa, novabibliografia);
 		disciplinaDao.editar(disciplina);
 
 		System.out.println(disciplinaDao.getTodos());
-		
-		/*/*		 * */
 
 		MenuUtil.menuAlterar();
 

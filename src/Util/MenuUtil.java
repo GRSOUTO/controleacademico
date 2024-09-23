@@ -60,7 +60,7 @@ public class MenuUtil {
 			break;
 		case 0:
 			System.out.println("Saindo do sistema...");
-			limparTela();
+			// limparTela();
 			break;
 		default:
 			System.out.println("Opção inválida!");
@@ -79,7 +79,7 @@ public class MenuUtil {
 		System.out.println("3. Cadastar Discipliana");
 		System.out.println("4. Cadastar Curso");
 		System.out.println("5. Cadastar Turma");
-		System.out.println("0. Sair");
+		System.out.println("0. Retornar");
 		System.out.print("Digite a opção desejada: ");
 		opcao = scanner.nextInt();
 		switch (opcao) {
@@ -88,7 +88,7 @@ public class MenuUtil {
 			break;
 		case 2:
 			limparTela();
-			MenuProfessor.cadastrarProfessor(); 
+			MenuProfessor.cadastrarProfessor();
 			break;
 		case 3:
 			MenuDisciplina.cadastrarDisciplina();
@@ -119,7 +119,7 @@ public class MenuUtil {
 		System.out.println("3. Alterar Discipliana");
 		System.out.println("4. Alterar Curso");
 		System.out.println("5. Alterar Turma");
-		System.out.println("0. Sair");
+		System.out.println("0. Retornar");
 		System.out.print("Digite a opção desejada: ");
 
 		opcao = scanner.nextInt();
@@ -168,7 +168,7 @@ public class MenuUtil {
 		System.out.println("3. Excluir Discipliana");
 		System.out.println("4. Excluir Curso");
 		System.out.println("5. Excluir Turma");
-		System.out.println("0. Sair");
+		System.out.println("0. Retornar");
 		System.out.print("Digite a opção desejada: ");
 
 		opcao = scanner.nextInt();
@@ -212,7 +212,7 @@ public class MenuUtil {
 		System.out.println("3. Pesquisar Discipliana");
 		System.out.println("4. Pesquisar Curso");
 		System.out.println("5. Pesquisar Turma");
-		System.out.println("0. Sair");
+		System.out.println("0. Retornar");
 		System.out.print("Digite a opção desejada: ");
 
 		opcao = scanner.nextInt();
