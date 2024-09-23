@@ -13,7 +13,7 @@ import model.Situacao;
 import model.TipoSexo;
 
 public class MenuDisciplina {
-	public static void cadastrarAluno() {
+	public static void cadastrarDisciplina() {
 		DisciplinaDao disciplinaDao = new DisciplinaDaoImp();
 
 		IdGenerator idgera = new IdGenerator();

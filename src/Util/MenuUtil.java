@@ -87,10 +87,12 @@ public class MenuUtil {
 			MenuAluno.cadastrarAluno();
 			break;
 		case 2:
-			//
+			limparTela();
+			MenuProfessor.cadastrarProfessor(); 
 			break;
+
 		case 3:
-			MenuDisciplina.cadastrarAluno();
+			MenuDisciplina.cadastrarDisciplina();
 			break;
 		case 4:
 			// cadastrarProfessor();
@@ -129,8 +131,10 @@ public class MenuUtil {
 			MenuAluno.alterarAluno();
 			break;
 		case 2:
-			/// alterarAluno();
+			limparTela();
+			MenuProfessor.alterarProfessor();
 			break;
+
 		case 3:
 			MenuDisciplina.alterarDisciplina();
 			break;
@@ -176,8 +180,10 @@ public class MenuUtil {
 			MenuAluno.excluirAluno();
 			break;
 		case 2:
-			/// alterarAluno();
+			limparTela();
+			MenuProfessor.excluirProfessor();
 			break;
+
 		case 3:
 			// cadastrarProfessor();
 			break;
@@ -218,7 +224,8 @@ public class MenuUtil {
 			MenuAluno.pesquisaAluno();
 			break;
 		case 2:
-			/// alterarAluno();
+			limparTela();
+			MenuProfessor.pesquisaProfessor();
 			break;
 		case 3:
 			// cadastrarProfessor();
