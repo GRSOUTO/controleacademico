@@ -20,6 +20,8 @@ public class MenuProfessor {
 
 		IdGenerator idgera = new IdGenerator();
 
+		/* TESTE */
+		
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("--------------------------------------------------------------");
 				
