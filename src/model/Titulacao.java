@@ -2,7 +2,7 @@ package model;
 
 public enum Titulacao {
 	
-	GRADUADO('G'),POSGRADUADO('P'),MESTRE('M'),DOUTOR('D');
+	GRADUADO('G'),POSGRADUADO('P'),MESTRE('M'),DOUTOR('D'),INDEFINIDO('I');
 	
 		
 	private char desc;

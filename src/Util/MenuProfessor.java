@@ -107,24 +107,22 @@ public class MenuProfessor {
 		
 
 		Converter converter = new Converter();
-		Titulacao status = converter.convertTitulacao(novaTitulacao); 
-	//	TipoSexo tiposexo = converter.convert(novosexo);
-	//	LocalDate novadata = converter.convertData(novodtNascimento);
+		//	LocalDate novadata = converter.convertData(novodtNascimento);
+		
+		Titulacao status = Titulacao.INDEFINIDO;
 
-		if (novaTitulacao.isEmpty()) {
+		if (!novaTitulacao.isEmpty()) {
+			status = converter.convertTitulacao(novaTitulacao);
+		} else if (novosexo.isEmpty()) {
 			status = professorEncontrado.getTitulacaoMaxima();
-
 		}
+
 
 		if (novoNome.isEmpty()) {
 			novoNome = professorEncontrado.getNome();
 		}
 
-		/*if (novodtNascimento.isEmpty()) {
-
-			novadata = professorEncontrado.getDtNascimento();
-		}*/
-		
+				
 		LocalDate novadata = LocalDate.now();
 
 		if (!novodtNascimento.isEmpty()) {
@@ -134,12 +132,7 @@ public class MenuProfessor {
 			novadata = professorEncontrado.getDtNascimento();
 
 		}
-
-	/*	if (novosexo.isEmpty()) {
-
-			tiposexo = professorEncontrado.getSexo();
-		}*/
-		
+			
 		TipoSexo tiposexo = TipoSexo.INDEFINIDO;
 
 		if (!novosexo.isEmpty()) {
