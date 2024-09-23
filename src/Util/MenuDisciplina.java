@@ -104,6 +104,8 @@ public class MenuDisciplina {
 		disciplinaDao.editar(disciplina);
 
 		System.out.println(disciplinaDao.getTodos());
+		
+		/*/*		 * */
 
 		MenuUtil.menuAlterar();
 
