@@ -2,33 +2,53 @@ package model;
 
 public class Curso {
 
-	private Integer codigo;
-	private String descricao;
+	private Long codigo;
+	private String descricao; 
 
 	private Disciplina disciplina;
 
 	private Professor professor;
 
+<<<<<<< Updated upstream
 	///private Aluno aluno;
+=======
+>>>>>>> Stashed changes
 
 	public Curso() {
 
 	}
 
+<<<<<<< Updated upstream
 	public Curso(Integer codigo, String descricao, Disciplina disciplina, Professor professor) {
+=======
+	public Curso(Long codigo) {
+		this.codigo = codigo;
+	} 
+	
+	public Curso(Long codigo, String descricao) {
+		this.codigo = codigo;
+		this.descricao = descricao;
+	} 
+	
+	public Curso(Long codigo, String descricao, Disciplina disciplina, Professor professor) {
+>>>>>>> Stashed changes
 		super();
 		this.codigo = codigo;
 		this.descricao = descricao;
 		this.disciplina = disciplina;
 		this.professor = professor;
+<<<<<<< Updated upstream
 		
+=======
+>>>>>>> Stashed changes
 	}
+		
 
-	public Integer getCodigo() {
+	public Long getCodigo() {
 		return codigo;
 	}
 
-	public void setCodigo(Integer codigo) {
+	public void setCodigo(Long codigo) {
 		this.codigo = codigo;
 	}
 
@@ -40,6 +60,7 @@ public class Curso {
 		this.descricao = descricao;
 	}
 
+	
 	public Disciplina getDisciplina() {
 		return disciplina;
 	}
@@ -47,7 +68,7 @@ public class Curso {
 	public void setDisciplina(Disciplina disciplina) {
 		this.disciplina = disciplina;
 	}
-
+	
 	public Professor getProfessor() {
 		return professor;
 	}
@@ -56,6 +77,7 @@ public class Curso {
 		this.professor = professor;
 	}
 
+<<<<<<< Updated upstream
 
 
 
@@ -63,6 +85,13 @@ public class Curso {
 	public String toString() {
 		return "\n" + "Curso [codigo=" + codigo + ", descricao=" + descricao + ", disciplina=" + disciplina + ", professor="
 				+ professor + "]";
+=======
+	
+	@Override
+	public String toString() {
+		return "\n" + "Curso [codigo=" + codigo + ", descricao=" + descricao + ", disciplina=" + disciplina + ", professor="
+				+ professor +  "]";
+>>>>>>> Stashed changes
 	}
 
 

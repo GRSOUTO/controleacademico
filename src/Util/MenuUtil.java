@@ -94,7 +94,7 @@ public class MenuUtil {
 			MenuDisciplina.cadastrarDisciplina();
 			break;
 		case 4:
-			// cadastrarProfessor();
+			MenuCurso.cadastrarCurso();
 			break;
 		case 0:
 			System.out.println("Saindo Menu Principal do sistema...");
@@ -138,7 +138,7 @@ public class MenuUtil {
 			MenuDisciplina.alterarDisciplina();
 			break;
 		case 4:
-			// cadastrarProfessor();
+			MenuCurso.alterarCurso();
 			break;
 		case 0:
 			System.out.println("Saindo Menu Principal do sistema...");
@@ -187,7 +187,8 @@ public class MenuUtil {
 			// cadastrarProfessor();
 			break;
 		case 4:
-			// cadastrarProfessor();
+			limparTela();
+			MenuCurso.excluirCurso();
 			break;
 		case 0:
 			System.out.println("Saindo Menu Principal do sistema...");
@@ -230,7 +231,8 @@ public class MenuUtil {
 			// cadastrarProfessor();
 			break;
 		case 4:
-			// cadastrarProfessor();
+			limparTela();
+			MenuCurso.pesquisaCurso();
 			break;
 		case 0:
 			System.out.println("Saindo Menu Principal do sistema...");
