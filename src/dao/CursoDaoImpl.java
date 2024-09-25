@@ -6,22 +6,24 @@ import java.util.LinkedList;
 import java.util.List;
 
 import model.Curso;
+import model.Disciplina;
 import model.Professor;
 
 public class CursoDaoImpl implements CursoDao {
 
 	private static List<Curso> cadcurso;
-	
+
 	public CursoDaoImpl() {
-		createCursoList(); 
+		createCursoList();
 	}
-	
+
 	private List<Curso> createCursoList() {
 		if (cadcurso == null) {
 			cadcurso = new LinkedList<>();
-			cadcurso.add(new Curso(1L, "Curso um"));
-			cadcurso.add(new Curso(2L, "Curso dois"));
-			cadcurso.add(new Curso(3L, "Curso tres"));
+			
+			cadcurso.add(new Curso(1L, "Curso um",1L,1L));
+			cadcurso.add(new Curso(1L, "Curso dois",2L,2L));
+	    	cadcurso.add(new Curso(3L, "Curso tres",3L,3L));
 		}
 		return cadcurso;
 	}
@@ -32,28 +34,18 @@ public class CursoDaoImpl implements CursoDao {
 	}
 
 	@Override
-	public void editar(Curso curso) {
-		/*
-		 * cadaluno.stream() .filter((u) ->
-		 * u.getMatricula().equals(aluno.getMatricula())) .forEach((u) -> {
-		 * u.setSituacao(aluno.getSituacao()); u.setNome(aluno.getNome());
-		 * u.setEndereco(aluno.getEndereco()); u.setTelefone(aluno.getTelefone());
-		 * 
-		 * });
-		 */
-
-		for (Curso u : cadcurso) {
-			if (u.getCodigo().equals(curso.getCodigo())) {
-				u.setDescricao(curso.getDescricao());
-			}
-		}
+	public void editar(Curso curso, Long codigo, Long id) {
+		cadcurso.stream().filter((u) -> u.getCodigo().equals(curso.getCodigo())).forEach((u) -> {
+			u.setDescricao(curso.getDescricao());
+			u.setDisciplinas(curso.getDisciplinasc(codigo));
+			u.setProfessor(curso.getProfessor(id));
+		});
 
 	}
 
-	
 	@Override
 	public void excluir(Long codigo) {
-		
+
 		for (Iterator<Curso> iterator = cadcurso.iterator(); iterator.hasNext();) {
 			Curso curso = iterator.next();
 			if (curso.getCodigo().equals(codigo)) {
@@ -63,14 +55,12 @@ public class CursoDaoImpl implements CursoDao {
 		}
 
 	}
-	
 
 	@Override
 	public List<Curso> getTodos() {
 		return cadcurso;
 	}
 
-	
 	@Override
 	public Curso getCodigo(Long codigo) {
 
@@ -85,7 +75,13 @@ public class CursoDaoImpl implements CursoDao {
 		}
 
 		return null;
-	
+
+	}
+
+	@Override
+	public void editar(Curso curso) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

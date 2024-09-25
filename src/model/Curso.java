@@ -1,48 +1,33 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class Curso {
 
 	private Long codigo;
-	private String descricao; 
+	private String descricao;
 
-	private Disciplina disciplina;
+	private List<Disciplina> disciplinasc = new ArrayList<>();
 
-	private Professor professor;
+	private List<Professor> professor = new ArrayList<>();
 
-<<<<<<< Updated upstream
-	///private Aluno aluno;
-=======
->>>>>>> Stashed changes
-
-	public Curso() {
-
-	}
-
-<<<<<<< Updated upstream
-	public Curso(Integer codigo, String descricao, Disciplina disciplina, Professor professor) {
-=======
 	public Curso(Long codigo) {
 		this.codigo = codigo;
-	} 
-	
-	public Curso(Long codigo, String descricao) {
-		this.codigo = codigo;
-		this.descricao = descricao;
-	} 
-	
-	public Curso(Long codigo, String descricao, Disciplina disciplina, Professor professor) {
->>>>>>> Stashed changes
+	}
+
+	public Curso(Long codigo, String descricao, List<Disciplina> disciplinas, List<Professor> professor) {
 		super();
 		this.codigo = codigo;
 		this.descricao = descricao;
-		this.disciplina = disciplina;
+		this.disciplinasc = disciplinas;
 		this.professor = professor;
-<<<<<<< Updated upstream
-		
-=======
->>>>>>> Stashed changes
 	}
-		
+
+	public Curso(Long codigo, String descricao, Long codigodiscp, Long id) {
+		this(codigo, descricao, new ArrayList<>(), new ArrayList<>());
+	}
 
 	public Long getCodigo() {
 		return codigo;
@@ -60,40 +45,38 @@ public class Curso {
 		this.descricao = descricao;
 	}
 
-	
-	public Disciplina getDisciplina() {
-		return disciplina;
+	public List<Disciplina> getDisciplinasc(Long codigo) {
+		for (Disciplina disciplina : disciplinasc) {
+			if (disciplina.getCodigo().equals(codigo)) {
+				return Collections.singletonList(disciplina); // Retorna uma lista imutável com a disciplina encontrada
+
+			}
+		}
+		return Collections.emptyList(); // Retorna uma lista vazia se a disciplina não for encontrada
 	}
 
-	public void setDisciplina(Disciplina disciplina) {
-		this.disciplina = disciplina;
-	}
-	
-	public Professor getProfessor() {
-		return professor;
+	public void setDisciplinas(List<Disciplina> disciplinas) {
+		this.disciplinasc = disciplinas;
 	}
 
-	public void setProfessor(Professor professor) {
+	public List<Professor> getProfessor(Long id) {
+		for (Professor professor : professor) {
+			if (professor.getId().equals(id)) {
+				return Collections.singletonList(professor); // Retorna uma lista imutável com a disciplina encontrada
+			}
+		}
+		return Collections.emptyList(); // Retorna uma lista vazia se a disciplina não for encontrada
+	}
+
+	public void setProfessor(List<Professor> professor) {
 		this.professor = professor;
 	}
 
-<<<<<<< Updated upstream
-
-
-
 	@Override
 	public String toString() {
-		return "\n" + "Curso [codigo=" + codigo + ", descricao=" + descricao + ", disciplina=" + disciplina + ", professor="
-				+ professor + "]";
-=======
-	
-	@Override
-	public String toString() {
-		return "\n" + "Curso [codigo=" + codigo + ", descricao=" + descricao + ", disciplina=" + disciplina + ", professor="
-				+ professor +  "]";
->>>>>>> Stashed changes
+		return " \n Curso [codigo=" + codigo + ", descricao=" + descricao + ", disciplinas=" + getCodigo()
+				+ ", professor="
+				+ getProfessor(id) + "]";
 	}
-
-
 
 }
