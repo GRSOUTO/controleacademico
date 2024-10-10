@@ -1,5 +1,7 @@
 package dao;
 
+
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -17,9 +19,10 @@ public class CursoDaoImpl implements CursoDao {
 	private List<Curso> createCursoList() {
 		if (cadcurso == null) {
 			cadcurso = new LinkedList<>();
-			cadcurso.add(new Curso(1L, "Curso um",1L,1L));
-			cadcurso.add(new Curso(2L, "Curso dois",2L,2L));
-			cadcurso.add(new Curso(3L, "Curso tres",3L,3L));
+
+			cadcurso.add(new Curso(1L, "Curso 1", 1L, 1L));
+			cadcurso.add(new Curso(2L, "Curso 2", 2L, 2L));
+			cadcurso.add(new Curso(3L, "Curso 3", 3L, 3L));
 		}
 		return cadcurso;
 	}
@@ -31,14 +34,11 @@ public class CursoDaoImpl implements CursoDao {
 
 	@Override
 	public void editar(Curso curso) {
-		/*
-		 * cadaluno.stream() .filter((u) ->
-		 * u.getMatricula().equals(aluno.getMatricula())) .forEach((u) -> {
-		 * u.setSituacao(aluno.getSituacao()); u.setNome(aluno.getNome());
-		 * u.setEndereco(aluno.getEndereco()); u.setTelefone(aluno.getTelefone());
-		 * 
-		 * });
-		 */
+		cadcurso.stream().filter((u) -> u.getCodigo().equals(curso.getCodigo())).forEach((u) -> {
+			u.setDescricao(curso.getDescricao());
+			u.setDisciplinaId(curso.getDisciplinaId());
+			u.setProfessor(curso.getProfessor());
+		}
 
 		for (Curso u : cadcurso) {
 			if (u.getCodigo().equals(curso.getCodigo())) {
@@ -48,7 +48,7 @@ public class CursoDaoImpl implements CursoDao {
 
 	}
 
-	
+
 	@Override
 	public void excluir(Long codigo) {
 		
@@ -85,5 +85,6 @@ public class CursoDaoImpl implements CursoDao {
 		return null;
 	
 	}
+
 
 }

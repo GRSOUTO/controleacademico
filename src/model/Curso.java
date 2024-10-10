@@ -24,6 +24,23 @@ public class Curso {
 		this.coddisciplina = coddisciplina;
 		this.codprofessor = codprofessor;
 	}
+	private String descricao;
+	private Long disciplinaId;
+	private Long professorId;
+	private List<Disciplina> disciplinas;
+	private List<Professor> professor;
+
+	
+	public Curso(Long codigo) {
+		this.codigo = codigo;
+	}
+
+	public Curso(Long codigo, String descricao, Long disciplinaId, Long professorId) {
+		this.codigo = codigo;
+		this.descricao = descricao;
+		this.disciplinaId = disciplinaId;
+		this.professorId = professorId;
+	}
 
 	public Long getCodigo() {
 		return codigo;
@@ -41,7 +58,6 @@ public class Curso {
 		this.descricao = descricao;
 	}
 
-	
 	
 	@Override
 	public String toString() { 
@@ -72,4 +88,38 @@ public class Curso {
 
 
 
+}
+	public Long getDisciplinaId() {
+		return disciplinaId;
+	}
+
+	public void setDisciplinaId(Long disciplinaId) {
+		this.disciplinaId = disciplinaId;
+	}
+
+	public Long getProfessorId() {
+		return professorId;
+	}
+
+	public void setProfessorId(Long professorId) {
+		this.professorId = professorId;
+	}
+
+	
+	public List<Professor> getProfessor() {
+		return professor;
+	}
+
+	public void setProfessor(List<Professor> professor) {
+		this.professor = professor;
+	}
+
+	@Override
+	public String toString() {
+		return "\n Curso [codigo=" + codigo + ", descricao=" + descricao + ", disciplinaId=" + disciplinaId
+				+ ", professorId=" + professorId +  "]";
+	}
+
+	
+	
 }

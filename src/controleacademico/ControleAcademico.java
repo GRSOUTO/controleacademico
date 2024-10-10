@@ -1,382 +1,278 @@
 package controleacademico;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import Util.MenuUtil;
+import dao.CursoDao;
+import dao.CursoDaoImpl;
+import dao.CursoDisciplinaProfessorimpl;
+import dao.DisciplinaDaoImp;
+import dao.ProfessorDao;
+import dao.ProfessorDaoImpl;
+import model.Curso;
+import model.Disciplina;
+import model.Professor;
+
 
 public class ControleAcademico {
 
 	public static void main(String[] args) {
- 
-		//MenuUtil menu = new MenuUtil(); 
-		
+
+
+		CursoDisciplinaProfessorimpl associador1 = new CursoDisciplinaProfessorimpl();
+		associador1.obterCursoDiscProf();
+
 		MenuUtil.mostrarMenuPrincipal();
 
 	}
-/*
-	private static void mostrarMenuPrincipal() {
-		Scanner scanner = new Scanner(System.in);
-		int opcao;
 
-		System.out.println("------------------------------------------------------------");
-		System.out.println("Menu de Cadastro:");
-		System.out.println("1. Cadastrar");
-		System.out.println("2. Alterar");
-		System.out.println("3. Excluir");
-		System.out.println("4. Pesquisar");
-		System.out.println("0. Sair");
-		System.out.print("Digite a opção desejada: ");
-		opcao = scanner.nextInt();
-		switch (opcao) {
-		// Cadastrar----------------------------------->
-		case 1:
-			do {
-				limparTela();
-				mostrarMenuCadastro();
-				///scanner.nextInt();
-			} while (opcao != 0);
-
-			break;
-		/// Alterar------------------------------------------------------------>
-		case 2:
-			do {
-				limparTela();
-				menuAlterarAluno();
-				//opcao = scanner.nextInt();
-			} while (opcao != 0);
-
-			break;
-		// Exluir------------------------------------------------------------>
-		case 3:
-			do {
-				limparTela();
-				menuExluirAluno();
-
-			} while (opcao != 0);
-
-			break;
-		// Pesquisar------------------------------------------------------------>
-		case 4:
-			limparTela();
-			menuPesquisaAluno();
-			break;
-		case 0:
-			System.out.println("Saindo do sistema...");
-			limparTela();
-			break;
-		default:
-			System.out.println("Opção inválida!");
-		}
-
-	}
-
-	private static void mostrarMenuCadastro() {
-		Scanner scanner = new Scanner(System.in);
-		int opcao;
-
-		System.out.println("----------------------------------------------------------------");
-		System.out.println(">>Menu de Cadastro Academico:");
-		System.out.println("1. Cadastrar Alunos");
-		System.out.println("2. Cadastar professor");
-		System.out.println("3. Cadastar Discipliana");
-		System.out.println("4. Cadastar Curso");
-		System.out.println("5. Cadastar Turma");
-		System.out.println("0. Sair");
-		System.out.print("Digite a opção desejada: ");
-		opcao = scanner.nextInt();
-		switch (opcao) {
-		case 1:
-			limparTela();
-			cadastrarAluno();
-
-			break;
-		case 2:
-			/// alterarAluno();
-			break;
-		case 3:
-			// cadastrarProfessor();
-			break;
-		case 4:
-			// cadastrarProfessor();
-			break;
-		case 0:
-			System.out.println("Saindo Menu Principal do sistema...");
-			limparTela();
-			mostrarMenuPrincipal();
-			break;
-		default:
-			System.out.println("Opção inválida!");
-
-		}
-
-	}
-
-	private static void cadastrarAluno() {
-		AlunoDao alunoDao = new AlunoDaoImpl();
-
-		IdGenerator idgera = new IdGenerator();
-
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("--------------------------------------------------------------");
-
-		System.out.println(">>Menu de Cadastro Aluno:");
-		System.out.print("Situacao :");
-		String situacao = scanner.nextLine();
-		System.out.print("Nome :");
-		String nome = scanner.nextLine();
-		System.out.print("Endereço :");
-		String endereco = scanner.nextLine();
-		System.out.print("Telefone :");
-		String telefone = scanner.nextLine();
-
-		Aluno aluno = new Aluno(idgera.getNextId(), situacao, nome, endereco, telefone);
-		alunoDao.salvar(aluno);
-
-		System.out.println(alunoDao.getTodos());
-		System.out.print("0. Sair :");
-
-	}
-
-	private static void menuAlterarAluno() {
-		Scanner scanner = new Scanner(System.in);
-		int opcao;
-
-		System.out.println("----------------------------------------------------------------");
-		System.out.println(">>Menu de Alterar Cadastro Academico:");
-		System.out.println("1. Alterar Alunos");
-		System.out.println("2. Alterar Professor");
-		System.out.println("3. Alterar Discipliana");
-		System.out.println("4. Alterar Curso");
-		System.out.println("5. Alterar Turma");
-		System.out.println("0. Sair");
-		System.out.print("Digite a opção desejada: ");
-
-		opcao = scanner.nextInt();
-
-		switch (opcao) {
-		case 1:
-			limparTela();
-			alterarAluno();
-			break;
-		case 2:
-			/// alterarAluno();
-			break;
-		case 3:
-			// cadastrarProfessor();
-			break;
-		case 4:
-			// cadastrarProfessor();
-			break;
-		case 0:
-			System.out.println("Saindo Menu Principal do sistema...");
-			limparTela();
-			mostrarMenuPrincipal();
-			break;
-		default:
-			System.out.println("Opção inválida!");
-
-		}
-
-	}
-
-	private static void alterarAluno() {
-		Scanner scanner = new Scanner(System.in);
-
-		AlunoDao alunoDao = new AlunoDaoImpl();
-		System.out.println(alunoDao.getTodos());
-
-		System.out.print("Digite a Matricula :");
-		Long matricula = scanner.nextLong();
-
-		Aluno alunoEncontrado = alunoDao.getId(matricula);
-
-		if (alunoEncontrado != null) {
-			System.out.println("Aluno encontrado: " + alunoEncontrado);
-		} else {
-			System.out.println("Aluno não encontrado.");
-		}
-
-		System.out.println(">>Alterar Aluno:");
-		System.out.println("Nova situação (deixe em branco para manter): ");
-		System.out.println("-------------------------------------------");
-		System.out.println("Matricula :" + alunoEncontrado.getMatricula());
-
-		System.out.print("Situacao :");
-		scanner.nextLine();
-		String novaSituacao = scanner.nextLine();
-		System.out.print("Nome :");
-		String novoNome = scanner.nextLine();
-		System.out.print("Endereço :");
-		String novoEndereco = scanner.nextLine();
-		System.out.print("Telefone :");
-		String novoTelefone = scanner.nextLine();
-
-		// System.out.println("O nome igual:" + alunoEncontrado.getNome());
-		// System.out.println("O nome novoNome:" + novoNome);
-
-		// Atualizar apenas os campos que foram alterados
-		if (novaSituacao.isEmpty()) {
-			novaSituacao = alunoEncontrado.getSituacao();
-		}
-
-		if (novoNome.isEmpty()) {
-			novoNome = alunoEncontrado.getNome();
-		}
-
-		if (novoEndereco.isEmpty()) {
-			novoEndereco = alunoEncontrado.getEndereco();
-		}
-
-		if (novoTelefone.isEmpty()) {
-			novoTelefone = alunoEncontrado.getTelefone();
-		}
-
-		Aluno aluno = new Aluno(matricula, novaSituacao, novoNome, novoEndereco, novoTelefone);
-		alunoDao.editar(aluno);
-
-		System.out.println(alunoDao.getTodos());
-	}
-
-	private static void limparTela() {
-		System.out.print("\033[H\033[2J");
-		System.out.flush();
-	}
-
-	private static void menuExluirAluno() {
-		Scanner scanner = new Scanner(System.in);
-		int opcao;
-
-		System.out.println("----------------------------------------------------------------");
-		System.out.println(">>Menu de Alterar Cadastro Academico:");
-		System.out.println("1. Excluir Alunos");
-		System.out.println("2. Excluir Professor");
-		System.out.println("3. Excluir Discipliana");
-		System.out.println("4. Excluir Curso");
-		System.out.println("5. Excluir Turma");
-		System.out.println("0. Sair");
-		System.out.print("Digite a opção desejada: ");
-
-		opcao = scanner.nextInt();
-
-		switch (opcao) {
-		case 1:
-			limparTela();
-			excluirAluno();
-			break;
-		case 2:
-			/// alterarAluno();
-			break;
-		case 3:
-			// cadastrarProfessor();
-			break;
-		case 4:
-			// cadastrarProfessor();
-			break;
-		case 0:
-			System.out.println("Saindo Menu Principal do sistema...");
-			limparTela();
-			mostrarMenuPrincipal();
-			break;
-		default:
-			System.out.println("Opção inválida!");
-
-		}
-
-	}
-
-	private static void excluirAluno() {
-		Scanner scanner = new Scanner(System.in);
-
-		AlunoDao alunoDao = new AlunoDaoImpl();
-		System.out.println(alunoDao.getTodos());
-
-		System.out.print("Digite a Matricula :");
-		Long matricula = scanner.nextLong();
-
-		Aluno alunoEncontrado = alunoDao.getId(matricula);
-
-		if (alunoEncontrado != null) {
-			System.out.println("Aluno encontrado: " + alunoEncontrado);
-		} else {
-			System.out.println("Aluno não encontrado.");
-		}
-
-		System.out.println(">>Excluir Aluno:");
-		System.out.println("-------------------------------------------");
-		System.out.println("Matricula :" + alunoEncontrado.getMatricula());
-
-		Aluno aluno = new Aluno(matricula);
-		alunoDao.excluir(matricula);
-
-		System.out.println(alunoDao.getTodos());
-
-	}
-
-	private static void menuPesquisaAluno() {
-		Scanner scanner = new Scanner(System.in);
-		int opcao;
-
-		System.out.println("----------------------------------------------------------------");
-		System.out.println(">>Menu de Alterar Cadastro Academico:");
-		System.out.println("1. Pesquisar Alunos");
-		System.out.println("2. Pesquisar Professor");
-		System.out.println("3. Pesquisar Discipliana");
-		System.out.println("4. Pesquisar Curso");
-		System.out.println("5. Pesquisar Turma");
-		System.out.println("0. Sair");
-		System.out.print("Digite a opção desejada: ");
-
-		opcao = scanner.nextInt();
-
-		switch (opcao) {
-		case 1:
-			limparTela();
-			pesquisaAluno();
-			break;
-		case 2:
-			/// alterarAluno();
-			break;
-		case 3:
-			// cadastrarProfessor();
-			break;
-		case 4:
-			// cadastrarProfessor();
-			break;
-		case 0:
-			System.out.println("Saindo Menu Principal do sistema...");
-			limparTela();
-			mostrarMenuPrincipal();
-			break;
-		default:
-			System.out.println("Opção inválida!");
-
-		}
-
-	}
-
-	@SuppressWarnings("unused")
-	private static void pesquisaAluno() {
-		Scanner scanner = new Scanner(System.in);
-
-		AlunoDao alunoDao = new AlunoDaoImpl();
-		
-		System.out.print("Digite a Matricula :");
-		Long matricula = scanner.nextLong();
-
-		Aluno alunoEncontrado = alunoDao.getId(matricula);
-
-		System.out.println(">>Pesquisar Aluno:");
-		System.out.println("-------------------------------------------");
-
-		System.out.println("Matricula :" + alunoEncontrado.getMatricula());
-
-		if (alunoEncontrado != null) {
-			System.out.println("Aluno encontrado: " + alunoEncontrado);
-		} else {
-			System.out.println("Aluno não encontrado.");
-		}
-
-	
-
-	}*/
+	/*
+	 * private static void mostrarMenuPrincipal() { Scanner scanner = new
+	 * Scanner(System.in); int opcao;
+	 * 
+	 * System.out.println(
+	 * "------------------------------------------------------------");
+	 * System.out.println("Menu de Cadastro:"); System.out.println("1. Cadastrar");
+	 * System.out.println("2. Alterar"); System.out.println("3. Excluir");
+	 * System.out.println("4. Pesquisar"); System.out.println("0. Sair");
+	 * System.out.print("Digite a opção desejada: "); opcao = scanner.nextInt();
+	 * switch (opcao) { // Cadastrar-----------------------------------> case 1: do
+	 * { limparTela(); mostrarMenuCadastro(); ///scanner.nextInt(); } while (opcao
+	 * != 0);
+	 * 
+	 * break; ///
+	 * Alterar------------------------------------------------------------> case 2:
+	 * do { limparTela(); menuAlterarAluno(); //opcao = scanner.nextInt(); } while
+	 * (opcao != 0);
+	 * 
+	 * break; // Exluir------------------------------------------------------------>
+	 * case 3: do { limparTela(); menuExluirAluno();
+	 * 
+	 * } while (opcao != 0);
+	 * 
+	 * break; //
+	 * Pesquisar------------------------------------------------------------> case
+	 * 4: limparTela(); menuPesquisaAluno(); break; case 0:
+	 * System.out.println("Saindo do sistema..."); limparTela(); break; default:
+	 * System.out.println("Opção inválida!"); }
+	 * 
+	 * }
+	 * 
+	 * private static void mostrarMenuCadastro() { Scanner scanner = new
+	 * Scanner(System.in); int opcao;
+	 * 
+	 * System.out.println(
+	 * "----------------------------------------------------------------");
+	 * System.out.println(">>Menu de Cadastro Academico:");
+	 * System.out.println("1. Cadastrar Alunos");
+	 * System.out.println("2. Cadastar professor");
+	 * System.out.println("3. Cadastar Discipliana");
+	 * System.out.println("4. Cadastar Curso");
+	 * System.out.println("5. Cadastar Turma"); System.out.println("0. Sair");
+	 * System.out.print("Digite a opção desejada: "); opcao = scanner.nextInt();
+	 * switch (opcao) { case 1: limparTela(); cadastrarAluno();
+	 * 
+	 * break; case 2: /// alterarAluno(); break; case 3: // cadastrarProfessor();
+	 * break; case 4: // cadastrarProfessor(); break; case 0:
+	 * System.out.println("Saindo Menu Principal do sistema..."); limparTela();
+	 * mostrarMenuPrincipal(); break; default:
+	 * System.out.println("Opção inválida!");
+	 * 
+	 * }
+	 * 
+	 * }
+	 * 
+	 * private static void cadastrarAluno() { AlunoDao alunoDao = new
+	 * AlunoDaoImpl();
+	 * 
+	 * IdGenerator idgera = new IdGenerator();
+	 * 
+	 * Scanner scanner = new Scanner(System.in); System.out.println(
+	 * "--------------------------------------------------------------");
+	 * 
+	 * System.out.println(">>Menu de Cadastro Aluno:");
+	 * System.out.print("Situacao :"); String situacao = scanner.nextLine();
+	 * System.out.print("Nome :"); String nome = scanner.nextLine();
+	 * System.out.print("Endereço :"); String endereco = scanner.nextLine();
+	 * System.out.print("Telefone :"); String telefone = scanner.nextLine();
+	 * 
+	 * Aluno aluno = new Aluno(idgera.getNextId(), situacao, nome, endereco,
+	 * telefone); alunoDao.salvar(aluno);
+	 * 
+	 * System.out.println(alunoDao.getTodos()); System.out.print("0. Sair :");
+	 * 
+	 * }
+	 * 
+	 * private static void menuAlterarAluno() { Scanner scanner = new
+	 * Scanner(System.in); int opcao;
+	 * 
+	 * System.out.println(
+	 * "----------------------------------------------------------------");
+	 * System.out.println(">>Menu de Alterar Cadastro Academico:");
+	 * System.out.println("1. Alterar Alunos");
+	 * System.out.println("2. Alterar Professor");
+	 * System.out.println("3. Alterar Discipliana");
+	 * System.out.println("4. Alterar Curso");
+	 * System.out.println("5. Alterar Turma"); System.out.println("0. Sair");
+	 * System.out.print("Digite a opção desejada: ");
+	 * 
+	 * opcao = scanner.nextInt();
+	 * 
+	 * switch (opcao) { case 1: limparTela(); alterarAluno(); break; case 2: ///
+	 * alterarAluno(); break; case 3: // cadastrarProfessor(); break; case 4: //
+	 * cadastrarProfessor(); break; case 0:
+	 * System.out.println("Saindo Menu Principal do sistema..."); limparTela();
+	 * mostrarMenuPrincipal(); break; default:
+	 * System.out.println("Opção inválida!");
+	 * 
+	 * }
+	 * 
+	 * }
+	 * 
+	 * private static void alterarAluno() { Scanner scanner = new
+	 * Scanner(System.in);
+	 * 
+	 * AlunoDao alunoDao = new AlunoDaoImpl();
+	 * System.out.println(alunoDao.getTodos());
+	 * 
+	 * System.out.print("Digite a Matricula :"); Long matricula =
+	 * scanner.nextLong();
+	 * 
+	 * Aluno alunoEncontrado = alunoDao.getId(matricula);
+	 * 
+	 * if (alunoEncontrado != null) { System.out.println("Aluno encontrado: " +
+	 * alunoEncontrado); } else { System.out.println("Aluno não encontrado."); }
+	 * 
+	 * System.out.println(">>Alterar Aluno:");
+	 * System.out.println("Nova situação (deixe em branco para manter): ");
+	 * System.out.println("-------------------------------------------");
+	 * System.out.println("Matricula :" + alunoEncontrado.getMatricula());
+	 * 
+	 * System.out.print("Situacao :"); scanner.nextLine(); String novaSituacao =
+	 * scanner.nextLine(); System.out.print("Nome :"); String novoNome =
+	 * scanner.nextLine(); System.out.print("Endereço :"); String novoEndereco =
+	 * scanner.nextLine(); System.out.print("Telefone :"); String novoTelefone =
+	 * scanner.nextLine();
+	 * 
+	 * // System.out.println("O nome igual:" + alunoEncontrado.getNome()); //
+	 * System.out.println("O nome novoNome:" + novoNome);
+	 * 
+	 * // Atualizar apenas os campos que foram alterados if (novaSituacao.isEmpty())
+	 * { novaSituacao = alunoEncontrado.getSituacao(); }
+	 * 
+	 * if (novoNome.isEmpty()) { novoNome = alunoEncontrado.getNome(); }
+	 * 
+	 * if (novoEndereco.isEmpty()) { novoEndereco = alunoEncontrado.getEndereco(); }
+	 * 
+	 * if (novoTelefone.isEmpty()) { novoTelefone = alunoEncontrado.getTelefone(); }
+	 * 
+	 * Aluno aluno = new Aluno(matricula, novaSituacao, novoNome, novoEndereco,
+	 * novoTelefone); alunoDao.editar(aluno);
+	 * 
+	 * System.out.println(alunoDao.getTodos()); }
+	 * 
+	 * private static void limparTela() { System.out.print("\033[H\033[2J");
+	 * System.out.flush(); }
+	 * 
+	 * private static void menuExluirAluno() { Scanner scanner = new
+	 * Scanner(System.in); int opcao;
+	 * 
+	 * System.out.println(
+	 * "----------------------------------------------------------------");
+	 * System.out.println(">>Menu de Alterar Cadastro Academico:");
+	 * System.out.println("1. Excluir Alunos");
+	 * System.out.println("2. Excluir Professor");
+	 * System.out.println("3. Excluir Discipliana");
+	 * System.out.println("4. Excluir Curso");
+	 * System.out.println("5. Excluir Turma"); System.out.println("0. Sair");
+	 * System.out.print("Digite a opção desejada: ");
+	 * 
+	 * opcao = scanner.nextInt();
+	 * 
+	 * switch (opcao) { case 1: limparTela(); excluirAluno(); break; case 2: ///
+	 * alterarAluno(); break; case 3: // cadastrarProfessor(); break; case 4: //
+	 * cadastrarProfessor(); break; case 0:
+	 * System.out.println("Saindo Menu Principal do sistema..."); limparTela();
+	 * mostrarMenuPrincipal(); break; default:
+	 * System.out.println("Opção inválida!");
+	 * 
+	 * }
+	 * 
+	 * }
+	 * 
+	 * private static void excluirAluno() { Scanner scanner = new
+	 * Scanner(System.in);
+	 * 
+	 * AlunoDao alunoDao = new AlunoDaoImpl();
+	 * System.out.println(alunoDao.getTodos());
+	 * 
+	 * System.out.print("Digite a Matricula :"); Long matricula =
+	 * scanner.nextLong();
+	 * 
+	 * Aluno alunoEncontrado = alunoDao.getId(matricula);
+	 * 
+	 * if (alunoEncontrado != null) { System.out.println("Aluno encontrado: " +
+	 * alunoEncontrado); } else { System.out.println("Aluno não encontrado."); }
+	 * 
+	 * System.out.println(">>Excluir Aluno:");
+	 * System.out.println("-------------------------------------------");
+	 * System.out.println("Matricula :" + alunoEncontrado.getMatricula());
+	 * 
+	 * Aluno aluno = new Aluno(matricula); alunoDao.excluir(matricula);
+	 * 
+	 * System.out.println(alunoDao.getTodos());
+	 * 
+	 * }
+	 * 
+	 * private static void menuPesquisaAluno() { Scanner scanner = new
+	 * Scanner(System.in); int opcao;
+	 * 
+	 * System.out.println(
+	 * "----------------------------------------------------------------");
+	 * System.out.println(">>Menu de Alterar Cadastro Academico:");
+	 * System.out.println("1. Pesquisar Alunos");
+	 * System.out.println("2. Pesquisar Professor");
+	 * System.out.println("3. Pesquisar Discipliana");
+	 * System.out.println("4. Pesquisar Curso");
+	 * System.out.println("5. Pesquisar Turma"); System.out.println("0. Sair");
+	 * System.out.print("Digite a opção desejada: ");
+	 * 
+	 * opcao = scanner.nextInt();
+	 * 
+	 * switch (opcao) { case 1: limparTela(); pesquisaAluno(); break; case 2: ///
+	 * alterarAluno(); break; case 3: // cadastrarProfessor(); break; case 4: //
+	 * cadastrarProfessor(); break; case 0:
+	 * System.out.println("Saindo Menu Principal do sistema..."); limparTela();
+	 * mostrarMenuPrincipal(); break; default:
+	 * System.out.println("Opção inválida!");
+	 * 
+	 * }
+	 * 
+	 * }
+	 * 
+	 * @SuppressWarnings("unused") private static void pesquisaAluno() { Scanner
+	 * scanner = new Scanner(System.in);
+	 * 
+	 * AlunoDao alunoDao = new AlunoDaoImpl();
+	 * 
+	 * System.out.print("Digite a Matricula :"); Long matricula =
+	 * scanner.nextLong();
+	 * 
+	 * Aluno alunoEncontrado = alunoDao.getId(matricula);
+	 * 
+	 * System.out.println(">>Pesquisar Aluno:");
+	 * System.out.println("-------------------------------------------");
+	 * 
+	 * System.out.println("Matricula :" + alunoEncontrado.getMatricula());
+	 * 
+	 * if (alunoEncontrado != null) { System.out.println("Aluno encontrado: " +
+	 * alunoEncontrado); } else { System.out.println("Aluno não encontrado."); }
+	 * 
+	 * 
+	 * 
+	 * }
+	 */
 
 }
 
