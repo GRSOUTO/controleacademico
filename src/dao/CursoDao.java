@@ -16,6 +16,4 @@ public interface CursoDao {
 
 	List<Curso> getTodos();
 
-	void editar(Curso curso, Long codigo, Long id);
-
 }
