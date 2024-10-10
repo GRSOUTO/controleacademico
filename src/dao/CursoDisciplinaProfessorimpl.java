@@ -21,68 +21,97 @@ public class CursoDisciplinaProfessorimpl implements CursoDisciplinaProfessor {
 
 		CursoDao cursoDao = new CursoDaoImpl();
 		List<Curso> cursos = cursoDao.getTodos();
-		// System.out.println(cursoDao.getTodos());
 
 		DisciplinaDaoImp disciplinaDao = new DisciplinaDaoImp();
 		List<Disciplina> disciplinas = disciplinaDao.getTodos();
-		// System.out.println(disciplinaDao.getTodos());
 
 		ProfessorDao professorDao = new ProfessorDaoImpl();
-		System.out.println(professorDao.getTodos());
-		// List<Professor> professores =new professorDao.getTodos();
-
+		
 		associarDiscipProfACursos(cursos, disciplinas, professorDao.getTodos());
 
 		return cursos;
 	}
 
-	private void associarDiscipProfACursos(List<Curso> cursos, List<Disciplina> disciplinas,
-			List<Professor> professores) {
+	private void associarDiscipProfACursos(List<Curso> cursos, List<Disciplina> disciplinas,List<Professor> professores) {
+
+		List<CursoDisciplinaProfessor> cursosComDetalhes = new ArrayList<>();
+
 		for (Curso curso : cursos) {
-	
+			CursoDisciplinaProfessor cdp = new CursoDisciplinaProfessor();
+			cdp.setCursoId(curso.getCodigo());
+			cdp.setDesCurso(curso.getDescricao());
 
-			System.out.println(curso);
-			System.out.println("ID CURSO:" + curso.getCodigo());
-			System.out.println("Descrição do Curso:" + curso.getDescricao());
+			if (cdp.getCursoId().equals(curso.getCodigo())) {
 
-			for (Disciplina disciplina : disciplinas) {
-				if (curso.getDisciplinaId().equals(disciplina.getCodigo())) {
-					System.out.println("Disciplina:" + disciplina.getDescricao());
-					break;
-				}
-			}
-
-			for (Professor professor : professores) {
-
-				if (curso.getProfessorId().equals(professor.getId())) {
-					System.out.println("Proferssor:" + professor.getNome());
-					System.out.println("  ");
-					break;
+				for (Disciplina disciplina : disciplinas) {
+					if (curso.getDisciplinaId().equals(disciplina.getCodigo())) {
+						cdp.setDisciplina(disciplina.getDescricao());
+						break;
+					}
 				}
 
+				for (Professor professor : professores) {
+					if (curso.getProfessorId().equals(professor.getId())) {
+						cdp.setProfessor(professor.getNome());
+						break;
+					}
+
+				}
+
 			}
+			cursosComDetalhes.add(cdp);
+
 		}
+		System.out.println(cursosComDetalhes);
 	}
 
-	public void imprimirCursoDisciplinaProfessor(List<Curso> cursos, List<Disciplina> disciplinas) {
-		System.out.println("Oi");
-		for (Curso curso : cursos) {
-			System.out.println("-------------------------------------------------------------");
-			System.out.println("ID Curso: " + curso.getCodigo());
-			System.out.println("Descrição Curso: " + curso.getDescricao());
-			System.out.println("Disciplina:" + curso.getDisciplinaId());
-			System.out.println("proFessor:" + curso.getProfessorId());
+	public void imprimirCursoDisciplinaProfessor() {
 
-			System.out.println(curso.getDisciplinaId());
+	}
 
-			/*
-			 * for (Disciplina disciplina : curso.getDisciplinaId()) {
-			 * 
-			 * System.out.println(disciplina.getCodigo());
-			 * System.out.println(" - Disciplina: " + disciplina.getDescricao());
-			 * 
-			 * }
-			 */
+	public static class CursoDisciplinaProfessor {
+		private Long cursoId;
+		private String DesCurso;
+		private String disciplina;
+		private String professor;
+
+		public Long getCursoId() {
+			return cursoId;
 		}
+
+		public void setCursoId(Long cursoId) {
+			this.cursoId = cursoId;
+		}
+
+		public String getDesCurso() {
+			return DesCurso;
+		}
+
+		public void setDesCurso(String desCurso) {
+			DesCurso = desCurso;
+		}
+
+		public String getDisciplina() {
+			return disciplina;
+		}
+
+		public void setDisciplina(String disciplina) {
+			this.disciplina = disciplina;
+		}
+
+		public String getProfessor() {
+			return professor;
+		}
+
+		public void setProfessor(String professor) {
+			this.professor = professor;
+		}
+
+		@Override
+		public String toString() {
+			return " \n CursoDisciplinaProfessor [cursoId=" + cursoId + ", DesCurso=" + DesCurso + ", disciplina="
+					+ disciplina + ", professor=" + professor + "]";
+		}
+
 	}
 }

@@ -19,9 +19,12 @@ public class ControleAcademico {
 
 	public static void main(String[] args) {
 
+		CursoDisciplinaProfessorimpl associador = new CursoDisciplinaProfessorimpl();
+		associador.obterCursoDiscProf();
 
-		CursoDisciplinaProfessorimpl associador1 = new CursoDisciplinaProfessorimpl();
-		associador1.obterCursoDiscProf();
+
+		//CursoDisciplinaProfessorimpl associador1 = new CursoDisciplinaProfessorimpl();
+		//associador1.obterCursoDiscProf();
 
 		MenuUtil.mostrarMenuPrincipal();
 
