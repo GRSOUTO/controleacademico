@@ -1,23 +1,30 @@
 package Util;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
 import dao.CursoDaoImpl;
+import dao.CursoDisciplinaProfessorimpl;
 import dao.CursoDao;
 import model.Aluno;
 import model.Curso;
 import model.Disciplina;
+import model.Professor;
 import model.Situacao;
 import model.TipoSexo;
 import model.Titulacao;
+
 import Util.MenuUtil;
 
 public class MenuCurso {
 
 	public static void cadastrarCurso() {
+		
+	
+		
 		CursoDaoImpl cursoDao = new CursoDaoImpl();
 
 		IdGenerator idgera = new IdGenerator();
@@ -45,8 +52,7 @@ public class MenuCurso {
 
 	public static void alterarCurso() {
 		Scanner scanner = new Scanner(System.in);
-        
-        
+
 		CursoDao cursoDao = new CursoDaoImpl();
 		System.out.println(cursoDao.getTodos());
 
@@ -72,35 +78,31 @@ public class MenuCurso {
 		System.out.print("Disciplina :");
 		String novaDisciplina = scanner.nextLine();
 		System.out.print("Professor :");
-		Long novoProfessor = scanner.nextLong();
-		
+		String novoProfessor = scanner.nextLine();
 
 		Converter converter = new Converter();
-		//	LocalDate novadata = converter.convertData(novodtNascimento);
-		
-		
+		// LocalDate novadata = converter.convertData(novodtNascimento);
+
 		if (novaDescricao.isEmpty()) {
 			novaDescricao = cursoEncontrado.getDescricao();
 		}
-	
-		
+
 		Long disciplinanova = null;
 		if (!novaDisciplina.isEmpty()) {
 			disciplinanova = Long.parseLong(novaDisciplina);
 		} else if (novaDisciplina.isEmpty()) {
-			List<Disciplina> disciplinas = cursoEncontrado.getDisciplinasc(numCod);
-					
+			disciplinanova = cursoEncontrado.getDisciplinaId();
 		}
-			
-	
-	/*	if (novoProfessor.isEmpty()) {
-			novoProfessor = cursoEncontrado.getProfessor();
-		}*/
-		
-		
-		Curso curso = new Curso(numCod, novaDescricao, disciplinanova, novoProfessor);
-		
-		
+
+		Long proferssoNovo = null;
+		if (!novoProfessor.isEmpty()) {
+			proferssoNovo = Long.parseLong(novoProfessor);
+		} else if (novaDisciplina.isEmpty()) {
+			proferssoNovo = cursoEncontrado.getProfessorId();
+		}
+
+		Curso curso = new Curso(numCod, novaDescricao, disciplinanova, proferssoNovo);
+
 		cursoDao.editar(curso);
 
 		System.out.println(cursoDao.getTodos());
@@ -137,7 +139,9 @@ public class MenuCurso {
 	@SuppressWarnings("unused")
 	public static void pesquisaCurso() {
 		Scanner scanner = new Scanner(System.in);
-
+	
+		
+		
 		CursoDao cursoDao = new CursoDaoImpl();
 
 		System.out.print("Digite o Código :");
@@ -157,6 +161,7 @@ public class MenuCurso {
 		}
 
 		MenuUtil.menuPesquisa();
+		
 
 	}
 
