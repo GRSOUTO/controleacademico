@@ -1,29 +1,12 @@
 package model;
 
-import model.Professor;
-import model.Disciplina;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class Curso {
 
 	private Long codigo;
-	private String descricao; 
-	private Long codprofessor;
-	private Long coddisciplina;
-	private String nomeprofessor;
-	private String nomedisciplina;
-
-
-	public Curso() {
-
-	}
-
-	
-	public Curso(Long codigo, String descricao, Long coddisciplina, Long codprofessor) {
-		this.codigo = codigo;
-		this.descricao = descricao;
-		this.coddisciplina = coddisciplina;
-		this.codprofessor = codprofessor;
-	}
 	private String descricao;
 	private Long disciplinaId;
 	private Long professorId;
@@ -42,6 +25,7 @@ public class Curso {
 		this.professorId = professorId;
 	}
 
+
 	public Long getCodigo() {
 		return codigo;
 	}
@@ -58,37 +42,6 @@ public class Curso {
 		this.descricao = descricao;
 	}
 
-	
-	@Override
-	public String toString() { 
-		
-		Disciplina caddisciplina;
-
-		Professor cadprofessor;
-		
-		for (Professor professor : cadprofessor) {
-			if (professor.getCodigo().equals(cadprofessor)) {
-				this.nomeprofessor =  professor.getNome(); 
-			}
-		}
-		
-		
-		for (Disciplina disciplina : caddisc) {
-			if (disciplina.getCodigo().equals(coddisc)) {
-				this.nomedisciplina =   disciplina.getDescricao(); 
-			}
-		}
-				
-				
-		
-		return "\n" + "Curso [codigo=" + codigo + ", descricao=" + descricao + ", disciplina=" + coddisciplina + ", professor="
-				+ codprofessor + "]";
-
-	}
-
-
-
-}
 	public Long getDisciplinaId() {
 		return disciplinaId;
 	}
@@ -119,6 +72,12 @@ public class Curso {
 		return "\n Curso [codigo=" + codigo + ", descricao=" + descricao + ", disciplinaId=" + disciplinaId
 				+ ", professorId=" + professorId +  "]";
 	}
+
+
+
+
+	
+
 
 	
 	
