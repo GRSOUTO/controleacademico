@@ -36,11 +36,9 @@ public class CursoDisciplinaProfessorimpl implements CursoDisciplinaProfessor {
 		return cursos;
 	}
 
-	private void associarDiscipProfACursos(List<Curso> cursos, List<Disciplina> disciplinas,
-			List<Professor> professores) {
+	private void associarDiscipProfACursos(List<Curso> cursos, List<Disciplina> disciplinas,List<Professor> professores) {
+		
 		for (Curso curso : cursos) {
-	
-
 			System.out.println(curso);
 			System.out.println("ID CURSO:" + curso.getCodigo());
 			System.out.println("Descrição do Curso:" + curso.getDescricao());
@@ -86,3 +84,9 @@ public class CursoDisciplinaProfessorimpl implements CursoDisciplinaProfessor {
 		}
 	}
 }
+
+ class CursoPorDiscProf {
+	
+}
+
+

@@ -1,21 +1,22 @@
 package dao;
 
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 import model.Curso;
+import model.Disciplina;
+import model.Professor;
 
 public class CursoDaoImpl implements CursoDao {
 
 	private static List<Curso> cadcurso;
-	
+
 	public CursoDaoImpl() {
-		createCursoList(); 
+		createCursoList();
 	}
-	
+
 	private List<Curso> createCursoList() {
 		if (cadcurso == null) {
 			cadcurso = new LinkedList<>();
@@ -38,37 +39,27 @@ public class CursoDaoImpl implements CursoDao {
 			u.setDescricao(curso.getDescricao());
 			u.setDisciplinaId(curso.getDisciplinaId());
 			u.setProfessor(curso.getProfessor());
-		}
-
-		for (Curso u : cadcurso) {
-			if (u.getCodigo().equals(curso.getCodigo())) {
-				u.setDescricao(curso.getDescricao());
-			}
-		}
+		});
 
 	}
 
-
 	@Override
 	public void excluir(Long codigo) {
-		
+
 		for (Iterator<Curso> iterator = cadcurso.iterator(); iterator.hasNext();) {
 			Curso curso = iterator.next();
 			if (curso.getCodigo().equals(codigo)) {
 				iterator.remove();
-				break; // SaÃ­mos do loop assim que encontramos e removemos o aluno
+				break; // Saímos do loop assim que encontramos e removemos o aluno
 			}
 		}
 
 	}
-	
 
-	@Override
-	public List<Curso> getTodos() { 
+	public List<Curso> getTodos() {
 		return cadcurso;
 	}
 
-	
 	@Override
 	public Curso getCodigo(Long codigo) {
 
@@ -83,8 +74,9 @@ public class CursoDaoImpl implements CursoDao {
 		}
 
 		return null;
-	
+
 	}
+
 
 
 }
