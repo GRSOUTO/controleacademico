@@ -73,6 +73,12 @@ public class Curso {
 				+ ", professorId=" + professorId +  "]";
 	}
 
+
+
+
+	
+
+
 	
 	
 }

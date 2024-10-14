@@ -6,11 +6,11 @@ import java.util.List;
 
 import model.Disciplina;
 
-public class DisciplinaDaoImp implements DisciplinaDao {
+public class DisciplinaDaoImpl implements DisciplinaDao {
 
 	private static List<Disciplina> caddisciplina;
 
-	public DisciplinaDaoImp() {
+	public DisciplinaDaoImpl() {
 		createDiscList();
 	}
 

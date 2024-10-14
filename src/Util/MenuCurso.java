@@ -7,10 +7,12 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 
 import dao.CursoDaoImpl;
+import dao.CursoDisciplinaProfessor;
 import dao.CursoDisciplinaProfessorimpl;
 import dao.CursoDao;
 import model.Aluno;
 import model.Curso;
+import model.CursoDiscipProfessor;
 import model.Disciplina;
 import model.Professor;
 import model.Situacao;
@@ -22,10 +24,9 @@ import Util.MenuUtil;
 public class MenuCurso {
 
 	public static void cadastrarCurso() {
-		
-	
-		
+
 		CursoDaoImpl cursoDao = new CursoDaoImpl();
+		CursoDisciplinaProfessorimpl cdp = new CursoDisciplinaProfessorimpl();
 
 		IdGenerator idgera = new IdGenerator();
 
@@ -45,7 +46,7 @@ public class MenuCurso {
 		Curso curso = new Curso(idgera.getNextId(), descricao, disciplina, professor);
 		cursoDao.salvar(curso);
 
-		System.out.println(cursoDao.getTodos());
+		System.out.println(cdp.getTodosCursos());
 		System.out.print("0. Sair :");
 
 	}
@@ -54,6 +55,7 @@ public class MenuCurso {
 		Scanner scanner = new Scanner(System.in);
 
 		CursoDao cursoDao = new CursoDaoImpl();
+		CursoDisciplinaProfessorimpl cdp = new CursoDisciplinaProfessorimpl();
 		System.out.println(cursoDao.getTodos());
 
 		System.out.print("Digite o Código :");
@@ -105,7 +107,7 @@ public class MenuCurso {
 
 		cursoDao.editar(curso);
 
-		System.out.println(cursoDao.getTodos());
+		System.out.println(cdp.getTodosCursos());
 	}
 
 	public static void excluirCurso() {
@@ -139,29 +141,29 @@ public class MenuCurso {
 	@SuppressWarnings("unused")
 	public static void pesquisaCurso() {
 		Scanner scanner = new Scanner(System.in);
-	
-		
-		
+
 		CursoDao cursoDao = new CursoDaoImpl();
+		CursoDisciplinaProfessorimpl cdp = new CursoDisciplinaProfessorimpl();
 
 		System.out.print("Digite o Código :");
 		Long numCod = scanner.nextLong();
 
-		Curso cursoEncontrado = cursoDao.getCodigo(numCod);
+		// Curso cursoEncontrado = cursoDao.getCodigo(numCod);
+		CursoDiscipProfessor cursoEncontrado = cdp.getId(numCod);
 
 		System.out.println(">>Pesquisar Curso:");
 		System.out.println("-------------------------------------------");
 
-		System.out.println("Código :" + cursoEncontrado.getCodigo());
+		System.out.println("Código :" + cursoEncontrado.getCursoId());
 
 		if (cursoEncontrado != null) {
 			System.out.println("Curso encontrado: " + cursoEncontrado);
+
 		} else {
 			System.out.println("Curso não encontrado.");
 		}
 
 		MenuUtil.menuPesquisa();
-		
 
 	}
 

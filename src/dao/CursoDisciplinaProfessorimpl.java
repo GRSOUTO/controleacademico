@@ -1,88 +1,81 @@
 package dao;
 
 import java.util.ArrayList;
-
-import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
-import java.util.function.Function;
+import java.util.Map;
 
-import javax.swing.plaf.synth.SynthOptionPaneUI;
-
+import model.Aluno;
 import model.Curso;
+import model.CursoDiscipProfessor;
 import model.Disciplina;
 import model.Professor;
-import dao.ProfessorDao;
-import dao.ProfessorDaoImpl;
 
 public class CursoDisciplinaProfessorimpl implements CursoDisciplinaProfessor {
 
+	public List<CursoDiscipProfessor> obterCursoDiscProf() {
+		List<Curso> cursos = new CursoDaoImpl().getTodos();
+		List<Disciplina> disciplinas = new DisciplinaDaoImpl().getTodos();
+		List<Professor> professores = new ProfessorDaoImpl().getTodos();
+
+		Map<Long, Disciplina> disciplinaMap = new HashMap<>();
+		for (Disciplina disciplina : disciplinas) {
+			//System.out.println(disciplina);
+			disciplinaMap.put(disciplina.getCodigo(), disciplina);
+			//System.out.println(disciplinaMap.put(disciplina.getCodigo(), disciplina));
+		}
+
+		Map<Long, Professor> professorMap = new HashMap<>();
+		//System.out.println(professorMap);
+		for (Professor professor : professores) {
+			//System.out.println(professorMap);
+			professorMap.put(professor.getId(), professor);
+			//System.out.println(professorMap.put(professor.getId(), professor));
+		}
+
+		List<CursoDiscipProfessor> cursosComDetalhes = new ArrayList<>();
+
+		for (Curso curso : cursos) {
+			CursoDiscipProfessor cdp = new CursoDiscipProfessor();
+
+			cdp.setCursoId(curso.getCodigo());
+			cdp.setDesCurso(curso.getDescricao());
+
+			if (cdp.getCursoId().equals(curso.getCodigo())) {
+
+				for (Disciplina disciplina : disciplinas) {
+					if (curso.getDisciplinaId().equals(disciplina.getCodigo())) {
+						cdp.setDisciplina(disciplina.getDescricao());
+						break;
+					}
+				}
+
+				for (Professor professor : professores) {
+					if (curso.getProfessorId().equals(professor.getId())) {
+						cdp.setProfessor(professor.getNome());
+						break;
+					}
+
+				}
+
+			}
+			cursosComDetalhes.add(cdp);
+
+		}
+		//System.out.println(cursosComDetalhes);
+		return cursosComDetalhes;
+	}
+
 	@Override
-	public List<Curso> obterCursoDiscProf() {
-
-		CursoDao cursoDao = new CursoDaoImpl();
-		List<Curso> cursos = cursoDao.getTodos();
-		// System.out.println(cursoDao.getTodos());
-
-		DisciplinaDaoImp disciplinaDao = new DisciplinaDaoImp();
-		List<Disciplina> disciplinas = disciplinaDao.getTodos();
-		// System.out.println(disciplinaDao.getTodos());
-
-		ProfessorDao professorDao = new ProfessorDaoImpl();
-		System.out.println(professorDao.getTodos());
-		// List<Professor> professores =new professorDao.getTodos();
-
-		associarDiscipProfACursos(cursos, disciplinas, professorDao.getTodos());
-
-		return cursos;
+	public List<CursoDiscipProfessor> getTodosCursos() {
+		return obterCursoDiscProf();
 	}
 
-	private void associarDiscipProfACursos(List<Curso> cursos, List<Disciplina> disciplinas,List<Professor> professores) {
-		
-		for (Curso curso : cursos) {
-			System.out.println(curso);
-			System.out.println("ID CURSO:" + curso.getCodigo());
-			System.out.println("Descrição do Curso:" + curso.getDescricao());
-
-			for (Disciplina disciplina : disciplinas) {
-				if (curso.getDisciplinaId().equals(disciplina.getCodigo())) {
-					System.out.println("Disciplina:" + disciplina.getDescricao());
-					break;
-				}
-			}
-
-			for (Professor professor : professores) {
-
-				if (curso.getProfessorId().equals(professor.getId())) {
-					System.out.println("Proferssor:" + professor.getNome());
-					System.out.println("  ");
-					break;
-				}
-
-			}
 		}
-	}
-
-	public void imprimirCursoDisciplinaProfessor(List<Curso> cursos, List<Disciplina> disciplinas) {
-		System.out.println("Oi");
-		for (Curso curso : cursos) {
-			System.out.println("-------------------------------------------------------------");
-			System.out.println("ID Curso: " + curso.getCodigo());
-			System.out.println("Descrição Curso: " + curso.getDescricao());
-			System.out.println("Disciplina:" + curso.getDisciplinaId());
-			System.out.println("proFessor:" + curso.getProfessorId());
-
-			System.out.println(curso.getDisciplinaId());
-
-			/*
-			 * for (Disciplina disciplina : curso.getDisciplinaId()) {
-			 * 
-			 * System.out.println(disciplina.getCodigo());
-			 * System.out.println(" - Disciplina: " + disciplina.getDescricao());
-			 * 
-			 * }
-			 */
 		}
+		return null;
 	}
+
 }
 
  class CursoPorDiscProf {

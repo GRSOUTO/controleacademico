@@ -1,6 +1,8 @@
 package dao;
 
+
 import java.util.ArrayList;
+
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -63,9 +65,6 @@ public class CursoDaoImpl implements CursoDao {
 	@Override
 	public Curso getCodigo(Long codigo) {
 
-		// return cadaluno.stream().filter((u) ->
-		// u.getMatricula().equals(matricula)).collect(Collectors.toList()).get(0);
-
 		for (Curso curso : cadcurso) {
 			if (curso.getCodigo().equals(codigo)) {
 				return curso;
@@ -76,7 +75,5 @@ public class CursoDaoImpl implements CursoDao {
 		return null;
 
 	}
-
-
 
 }
