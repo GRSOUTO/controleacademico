@@ -6,8 +6,9 @@ import java.util.List;
 import Util.MenuUtil;
 import dao.CursoDao;
 import dao.CursoDaoImpl;
+import dao.CursoDisciplinaProfessor;
 import dao.CursoDisciplinaProfessorimpl;
-import dao.DisciplinaDaoImp;
+import dao.DisciplinaDaoImpl;
 import dao.ProfessorDao;
 import dao.ProfessorDaoImpl;
 import model.Curso;
@@ -21,7 +22,8 @@ public class ControleAcademico {
 
 		CursoDisciplinaProfessorimpl associador = new CursoDisciplinaProfessorimpl();
 		associador.obterCursoDiscProf();
-
+		
+		
 
 		//CursoDisciplinaProfessorimpl associador1 = new CursoDisciplinaProfessorimpl();
 		//associador1.obterCursoDiscProf();

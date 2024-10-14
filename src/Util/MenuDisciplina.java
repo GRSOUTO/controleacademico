@@ -1,13 +1,13 @@
 package Util;
 
 import java.util.Scanner;
-import dao.DisciplinaDaoImp;
+import dao.DisciplinaDaoImpl;
 import dao.DisciplinaDao;
 import model.Disciplina;
 
 public class MenuDisciplina {
 	public static void cadastrarDisciplina() {
-		DisciplinaDao disciplinaDao = new DisciplinaDaoImp();
+		DisciplinaDao disciplinaDao = new DisciplinaDaoImpl();
 
 		IdGenerator idgera = new IdGenerator();
 
@@ -37,7 +37,7 @@ public class MenuDisciplina {
 		Integer cargaHoraria = 0;
 		Scanner scanner = new Scanner(System.in);
 
-		DisciplinaDao disciplinaDao = new DisciplinaDaoImp();
+		DisciplinaDao disciplinaDao = new DisciplinaDaoImpl();
 
 		System.out.println(disciplinaDao.getTodos());
 
