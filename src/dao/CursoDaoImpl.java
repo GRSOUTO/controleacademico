@@ -1,10 +1,15 @@
 package dao;
 
+
+import java.util.ArrayList;
+
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 import model.Curso;
+import model.Disciplina;
+import model.Professor;
 
 public class CursoDaoImpl implements CursoDao {
 

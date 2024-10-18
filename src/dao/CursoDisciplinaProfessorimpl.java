@@ -71,15 +71,15 @@ public class CursoDisciplinaProfessorimpl implements CursoDisciplinaProfessor {
 		return obterCursoDiscProf();
 	}
 
-	@Override
-	public CursoDiscipProfessor getId(Long cursoId) {
-		List<CursoDiscipProfessor> cursosComDetalhes = obterCursoDiscProf();
-		for (CursoDiscipProfessor cdp : cursosComDetalhes) {
-			if (cdp.getCursoId().equals(cursoId)) {
-				return cdp;
-			}
+		}
 		}
 		return null;
 	}
 
 }
+
+ class CursoPorDiscProf {
+	
+}
+
+
