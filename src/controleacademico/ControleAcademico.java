@@ -1,19 +1,11 @@
 package controleacademico;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import Util.MenuUtil;
-import dao.CursoDao;
-import dao.CursoDaoImpl;
-import dao.CursoDisciplinaProfessor;
 import dao.CursoDisciplinaProfessorimpl;
-import dao.DisciplinaDaoImpl;
-import dao.ProfessorDao;
-import dao.ProfessorDaoImpl;
-import model.Curso;
-import model.Disciplina;
-import model.Professor;
+import dao.TurmaDaoImpl;
+import model.Turma;
+
 
 
 public class ControleAcademico {
@@ -23,8 +15,10 @@ public class ControleAcademico {
 		CursoDisciplinaProfessorimpl associador = new CursoDisciplinaProfessorimpl();
 		associador.obterCursoDiscProf();
 		
-		
+		TurmaDaoImpl turma =new TurmaDaoImpl();
+		turma.getTodos();
 
+	
 		//CursoDisciplinaProfessorimpl associador1 = new CursoDisciplinaProfessorimpl();
 		//associador1.obterCursoDiscProf();
 

@@ -1,97 +1,99 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
 public class Turma {
 
+	private Long codigo;
 	private Integer ano;
 	private Integer semestre;
 	private Integer diaSemana;
 	private String horarios;
+    private Long cursosId;
+    private Long alunoId;
 
-	private Curso curso;
-	private Aluno aluno;
+    
+
+
 
 
 	public Turma() {
 	}
 
-
-	public Turma(Integer ano, Integer semestre, Integer diaSemana, String horarios, Curso curso, Aluno aluno) {
-		super();
+	public Turma(Long codigo, Integer ano, Integer semestre, Integer diaSemana, String horarios, Long cursosId,Long alunoId) {
+		this.codigo = codigo;
 		this.ano = ano;
 		this.semestre = semestre;
 		this.diaSemana = diaSemana;
 		this.horarios = horarios;
-		this.curso = curso;
-		this.aluno = aluno;
+		this.cursosId = cursosId;
+		this.cursosId = alunoId;
+		
+		
 	}
 
+	public Long getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(Long codigo) {
+		this.codigo = codigo;
+	}
 
 	public Integer getAno() {
 		return ano;
 	}
 
-
 	public void setAno(Integer ano) {
 		this.ano = ano;
 	}
-
 
 	public Integer getSemestre() {
 		return semestre;
 	}
 
-
 	public void setSemestre(Integer semestre) {
 		this.semestre = semestre;
 	}
-
 
 	public Integer getDiaSemana() {
 		return diaSemana;
 	}
 
-
 	public void setDiaSemana(Integer diaSemana) {
 		this.diaSemana = diaSemana;
 	}
-
 
 	public String getHorarios() {
 		return horarios;
 	}
 
-
 	public void setHorarios(String horarios) {
 		this.horarios = horarios;
 	}
 
-
-	public Curso getCurso() {
-		return curso;
+	public Long getCursosId() {
+		return cursosId;
 	}
 
-
-	public void setCurso(Curso curso) {
-		this.curso = curso;
+	public void setCursosId(Long cursosId) {
+		this.cursosId = cursosId;
 	}
 
-
-	public Aluno getAluno() {
-		return aluno;
+	public Long getAlunoId() {
+		return alunoId;
 	}
 
-
-	public void setAluno(Aluno aluno) {
-		this.aluno = aluno;
+	public void setAlunoId(Long alunoId) {
+		this.alunoId = alunoId;
 	}
 
 
 	@Override
 	public String toString() {
-		return "Turma [ano=" + ano + ", semestre=" + semestre + ", diaSemana=" + diaSemana + ", horarios=" + horarios
-				+ ", curso=" + curso + ", aluno=" + aluno + "]";
+		return "Turma [codigo=" + codigo + ", ano=" + ano + ", semestre=" + semestre + ", diaSemana=" + diaSemana
+				+ ", horarios=" + horarios + ", cursosId=" + cursosId + ", alunoId=" + alunoId + "]";
 	}
-
-	
-	
 }
